@@ -1,0 +1,74 @@
+{
+  "browserslist": {
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ],
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ]
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.6.2",
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@babel/runtime": "^7.14.8",
+    "@reduxjs/toolkit": "^1.5.1",
+    "@twilio-labs/serverless-runtime-types": "^2.1.1",
+    "@types/deepmerge": "^2.2.0",
+    "antd": "^4.16.9",
+    "deepmerge": "^4.2.2",
+    "lodash": "^4.17.21",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-json-view": "^1.21.3",
+    "react-redux": "^7.2.0",
+    "react-scripts": "4.0.3",
+    "redux-logger": "^3.0.6",
+    "twilio": "^3.66.0",
+    "twilio-sync": "2.0.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.14.8",
+    "@babel/plugin-proposal-object-rest-spread": "^7.14.7",
+    "@babel/preset-env": "^7.14.8",
+    "@babel/preset-typescript": "^7.14.5",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/lodash": "^4.14.171",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-redux": "^7.1.7",
+    "@types/redux-logger": "^3.0.9",
+    "@types/twilio": "^3.19.3",
+    "@types/uuid": "^8.3.1",
+    "concurrently": "^6.2.0",
+    "twilio-run": "^3.2.1",
+    "typescript": "~4.1.5"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "name": "lost-pets-proxy",
+  "private": true,
+  "scripts": {
+    "build": "concurrently -c \"yellow,magenta\" -n \"UI,BB\"  -p \"[{name}]\" \"yarn build:react;\" \"yarn build:babel\"",
+    "build:babel": "node scripts/pre-build; yarn babel functions --config-file=./scripts/babel.config.js --delete-dir-on-start --extensions \".ts\",\".js\" --out-dir ./dist/functions",
+    "build:react": "react-scripts build",
+    "deploy": "yarn build; node scripts/pre-deploy; yarn deploy:twilio --profile=lost-pet; node scripts/post-deploy;",
+    "deploy:twilio": "twilio serverless:deploy --cwd=dist --override-existing-project",
+    "dev": "concurrently -k -c \"yellow,magenta,cyan\" -n \"UI,BB,TW\"  -p \"[{name}]\" \"yarn dev:react;\" \"yarn dev:babel\" \"yarn dev:twilio\"",
+    "dev:babel": "yarn build:babel --watch",
+    "dev:react": "react-scripts start",
+    "dev:twilio": "yarn twilio-run dist --port=3001",
+    "grok": "ngrok http --region=us --hostname=pbread.ngrok.io 3001"
+  },
+  "version": "0.1.0"
+}

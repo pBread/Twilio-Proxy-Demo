@@ -1,0 +1,17 @@
+.app-header button {
+  margin-left: var(--padding-lg);
+  font-size: small;
+}
+
+.logo {
+  -khtml-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+
+  cursor: pointer;
+  display: flex;
+  height: 40px;
+  width: 200px;
+}

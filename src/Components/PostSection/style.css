@@ -1,0 +1,7 @@
+.masked-text :nth-of-type(span) {
+  cursor: pointer;
+}
+
+.masked-text > * {
+  margin-right: var(--padding-xs);
+}

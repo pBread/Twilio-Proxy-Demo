@@ -1,0 +1,48 @@
+:root {
+  /* Colors */
+  --gray-1: #fcfcfc;
+  --gray-2: #fafafa;
+  --gray-3: #f5f5f5;
+  --gray-4: #e8e8e8;
+  --gray-7: #8c8c8c;
+
+  --body-background: var(--gray-2);
+  --border-light: var(--gray-3) 2px solid;
+
+  background: var(--body-background);
+
+  /* Sizing */
+  --padding-xs: 8px;
+  --padding-sm: 10px;
+  --padding-md: 12px;
+  --padding-lg: 16px;
+  --padding-xl: 24px;
+  --side-buffer: 5%;
+
+  --border-radius-base: 2px;
+}
+
+body {
+  background: none !important;
+}
+
+.app-header {
+  align-items: center;
+  background: #ffff;
+  border-bottom: var(--border-light);
+  display: flex;
+  justify-content: space-between;
+  padding: var(--padding-sm) var(--side-buffer);
+}
+
+.app-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--padding-sm);
+  padding: var(--padding-xs) var(--side-buffer);
+}
+
+.app-body > * {
+  max-height: 90vh;
+  overflow: scroll;
+}

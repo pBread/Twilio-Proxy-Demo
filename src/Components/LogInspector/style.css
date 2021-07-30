@@ -1,0 +1,23 @@
+.log-modal-wrapper {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+.log-modal-body {
+  height: 85vh;
+  overflow: scroll;
+}
+
+.log-modal-entry {
+  display: grid;
+  grid-template-columns: 200px auto;
+  margin-bottom: 12px;
+}
+
+.empty-container {
+}

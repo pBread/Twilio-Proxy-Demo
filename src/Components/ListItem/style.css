@@ -1,0 +1,41 @@
+.list-item {
+  display: grid;
+  grid-template-areas:
+    "toggle title"
+    "actions body";
+  grid-template-columns: 40px auto;
+  grid-template-rows: 40px auto;
+  margin-bottom: var(--padding-xs);
+  width: 100%;
+}
+
+.list-item-toggle {
+  display: flex;
+  grid-area: toggle;
+  justify-content: center;
+}
+
+.list-item-toggle span {
+  margin: auto;
+}
+
+.list-item-actions {
+  display: flex;
+  flex-direction: column;
+  grid-area: actions;
+}
+
+.list-item-actions > * {
+  margin: var(--padding-md) 0;
+}
+
+.list-item-title {
+  font-weight: bold;
+  align-items: center;
+  display: flex;
+  grid-area: title;
+}
+
+.list-item-body {
+  grid-area: body;
+}
